@@ -1,0 +1,103 @@
+Tenali the brilliant schoolboy known for his problem-solving ability. He is famous and well known, people often felt jealousy so they came up with difficult problems to prove that Tenali is not a genius. One day Bhagwan Das came to Tenali with the problem of a balanced queue. Bhagwan Das argument is that any queue is said to be balanced if it contains the same number of increasing and decreasing sequences. For example, a queue of an integer is said to be balanced if it contains the same number of increasing and decreasing sequences.
+
+for example : consider 1 2 3 4 3 2 1 is queue of integer and it contains 1 increasing sequence 1 2 3 4 and 1 decreasing sequence 4 3 2 1, so this queue is balanced
+
+consider 90 80 70 60 40 30 23 44 55 43 23 is queue of integer and it contains 1 increasing sequence 23 44 55 and 2 decreasing sequences 90 80 70 60 40 30 23 and 55 43 23, so this queue is unbalanced
+
+Input Format
+
+First line contain an integer T which is total number of queues
+Next T pair of two lines:
+line 1 contain integer N to total number of elements in queue
+line 2 contain N space separated integers that are elements of queue.
+Constraints
+
+T>0 and T<100
+N>0 and N<100000
+Output Format
+
+print “Balanced” or “Unbalanced” for each queue in new line.
+Sample Input 0
+
+3
+6
+1 2 3 5 4 1
+5
+50 45 23 33 44
+10
+10 20 30 40 50 60 70 80 90 100
+Sample Output 0
+
+Balanced
+Balanced
+Unbalanced
+Explanation 0
+
+there are total T=3 queues
+first queue contains N=6 elements
+1 2 3 5 4 1 are elements of queue, there is 1 increasing sequence 1 2 3 5 and 1 decreasing sequence 5 4 1. So this queue is Balanced
+second queue contain N=5 elements.
+50 45 23 33 44 are elements of queue, there is 1 increasing sequence 23 33 44 and 1 decreasing sequence 50 45 23. So this queue is Balanced
+third queue contains N=10 elements
+10 20 30 40 50 60 70 80 90 100 are elements of queue, there is 1 increasing sequence 10 20 30 40 50 60 70 80 90 100 and no decreasing sequence. So this queue is Unbalanced.
+
+Solution :
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       int T,i;
+        Scanner scan=new Scanner(System.in);
+        T=scan.nextInt();
+        
+        for(i = T; i >= 0; i++)
+        {
+            int check=0, check1=0;
+            int a=0,b=0;
+            int[] arr = new int[100];
+            int N = scan.nextInt();
+            for(i = 0; i < N; i++)
+            {
+                arr[i]=scan.nextInt();
+            }
+            
+            for( i = 0; i < N-1; i++)
+            {
+             
+                if((arr[i]-arr[i+1])<0)
+                {     
+                 if(check==0)
+                 {
+                    a++;  
+                 }
+                    
+                       check++;
+                 check1=0;
+                }
+                if((arr[i]-arr[i+1])>0)
+                {
+                    check=0;
+                    
+                    if(check1==0)
+                    {
+                    b++;
+                   
+                    }
+                    check1++;
+                }
+            }
+         if((a-b)==0)
+         {
+             System.out.println("Balanced");
+         }
+         else
+         {
+             System.out.println("Unbalanced");
+         }
+            T--;
+        }   
+        
+    }
+}

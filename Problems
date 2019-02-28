@@ -1,0 +1,106 @@
+santa gif
+SantaSecretList
+Ho Ho Ho!
+
+Santa's workers have already begun working for Christmas this year. Santa has been watching over the kids from all over the world and made a note of the behaviour of all the kids. He sent that data over to his factory where all the cool toys are made.
+
+Now, the elves need to figure out how many toys are to be made along with the names of the kids to send charcoal to.
+
+So, you will have to create two lists on the basis of data sent over by Santa. 
+List 1 - "Nice List", add the names of all the kids that are nice. 
+List 2 - "Naughty List", add the names of all the kids that are naughty.
+
+Help Santa and the elves out in this mission and you may be rewarded!
+
+For simplicity's sake, duplicate names are allowed on the lists.
+
+Input Format
+
+This is the data Santa sent over to his factory
+4 
+1 Sam 
+2 Dean 
+1 Castiel 
+2 Crowley 
+The first value is the number of kids in the list, n (int). 
+The next n values will be two space separated values, the first will be the behaviour of the kid and the second will be the name of the kid 
+value 1 for behaviour represents nice 
+value 2 for behaviour represents naughty
+
+Constraints
+
+n <= 1000 the value for behaviour can only be either 1 or 2 
+the number of gifts <= n
+
+Output Format
+
+Sam, Nice 
+Dean, Naughty 
+Castiel, Nice 
+Crowley, Naughty 
+The Naughty List 
+Dean 
+Crowley 
+2 
+The first n values in the output are the names of the n kids sent by Santa, along with their classification as either naughty or nice. 
+Next is a simple print statement with the String "The Naughty List" 
+The next values are the names of the kids that are naughty. 
+The last integer value is the total number of gifts that the elves have to make this year.
+
+
+Solution :
+import java.io.*;
+import java.util.*;
+
+public class Solution 
+{
+     int num = 0;
+     String str = "null";
+    
+
+    public static void main(String[] args) 
+    {
+        int gift=0;
+        Scanner scan= new Scanner(System.in);
+        
+        int n = scan.nextInt();
+        int temp=0;
+        Solution[] arr= new Solution[n];
+        
+        for(int i = 0; i < n; i++)
+        {
+            arr[temp] = new Solution();
+            arr[temp].num = scan.nextInt();
+            
+            if(arr[temp].num==1)
+                gift++;
+            
+            arr[temp].str = scan.nextLine();
+            arr[temp].str = arr[temp].str.trim();
+            
+            temp++;
+        }
+        
+        temp=0;
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[temp].num==1)
+                System.out.println(arr[temp].str+", Nice");
+            
+            else if(arr[temp].num==2)
+                System.out.println(arr[temp].str+", Naughty");
+            temp++;
+        }
+        
+        System.out.println("The Naughty List");
+        temp=0;
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[temp].num==2)
+                System.out.println(arr[temp].str);
+            temp++;
+        }
+        System.out.println(gift);
+        
+    }
+}
